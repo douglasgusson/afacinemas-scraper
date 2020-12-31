@@ -3,6 +3,11 @@ name = "afacinemas-scraper"
 version = "0.1.0"
 description = "Ferramenta para raspagem de dados do site da rede Afa Cinemas"
 authors = ["Douglas Gusson <douglasgusson@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+
+repository = "https://github.com/douglasgusson/afacinemas-scraper"
+keywords = ["python", "scraping"]
 
 [tool.poetry.dependencies]
 python = "^3.6.1"
