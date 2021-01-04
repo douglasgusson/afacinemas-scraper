@@ -33,7 +33,7 @@ print(cinemas)
 ```
 
 📄 Saída:
-```
+```python
 [{'codigo': 4, 'nome': 'Boituva Cine Park', 'logo': 'http://afacinemas.com.br/logotipo/boituva.jpg', 'endereco': 'Avenida Vereador José Biagione, 660 Centro - Boituva /SP', 'contato': '(15) 3363-8083'}, ...]
 ```
 
@@ -49,6 +49,22 @@ print(proximos_lancamentos)
 ```
 
 📄 Saída:
-```
+```python
 [{'titulo': 'MONSTER HUNTER', 'estreia': '14/01/2021', 'poster': 'http://afacinemas.com.br/adm/cartazSite/hunter.jpg', 'descricao': 'Baseado no jogo da Capcom chamado Monster Hunter, a tenente Artemis e seus soldados são transportados para um novo mundo. Lá, eles se envolvem em batalhas imponentes, buscando desesperadamente a sobrevivência contra bestas gigantes portadoras de habilidades surreais.', 'classificacao': '14 ANOS', 'genero': 'AÇÃO', 'duracao': '110min'}, ...]
+```
+
+### 🔍 Buscando os preços dos ingressos
+
+```python
+from afacinemas_scraper import Scraper
+
+scraper = Scraper()
+
+precos_ingressos = afa.get_precos_ingressos(10)  # código do cinema
+print(precos_ingressos)
+```
+
+📄 Saída:
+```python
+[{'dia_semana': 'Domingo', 'precos': [{'descricao': 'Inteira 2D', 'valor': 24.0}, {'descricao': 'Meia 2D', 'valor': 12.0}, {'descricao': 'Inteira 3D', 'valor': 24.0}, {'descricao': 'Meia 3D', 'valor': 12.0}]}, ...]
 ```
