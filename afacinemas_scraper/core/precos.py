@@ -18,12 +18,19 @@ class ScraperPrecos(ScraperBase):
 
     def _get_precos(self, soup: BeautifulSoup) -> List[Dict]:
         elementos = soup.find_all("div", {"class": "col-a-12"})
-        return [self._get_preco(el) for el in elementos[1:5]]
+        precos = []
+        for el in elementos[1:5]:
+            preco = self._get_preco(el)
+            if preco:
+                precos.append(preco)
+        return precos
 
     def _get_preco(self, soup: BeautifulSoup) -> Dict:
         descricao = soup.find("div", {"class": "col-a-8"})
         valor = soup.find("div", {"class": "col-a-4"})
-        return {"descricao": descricao.text, "valor": float(valor.text)}
+
+        if descricao and valor:
+            return {"descricao": descricao.text, "valor": float(valor.text)}
 
     def extract(self, id_cinema: int) -> List[Dict]:
         try:
