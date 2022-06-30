@@ -68,3 +68,19 @@ print(precos_ingressos)
 ```python
 [{'dia_semana': 'Domingo', 'precos': [{'descricao': 'Inteira 2D', 'valor': 24.0}, {'descricao': 'Meia 2D', 'valor': 12.0}, {'descricao': 'Inteira 3D', 'valor': 24.0}, {'descricao': 'Meia 3D', 'valor': 12.0}]}, ...]
 ```
+
+### 🔍 Buscando a programação de um cinema
+
+```python
+from afacinemas_scraper import Scraper
+
+scraper = Scraper()
+
+programacao = afa.get_programacao(10, "2022-06-30")
+print(programacao))
+```
+
+📄 Saída:
+```python
+[{'codigo': '521', 'titulo': 'LIGHTYEAR', 'urlCapa': 'http://afacinemas.com.br/cartazSite/light.jpg', 'classificacao': 'LIVRE', 'genero': 'ANIMAÇÃO', 'duracao': '100 min', 'sinopse': 'Lightyear é uma aventura que apresenta a história definitiva da origem do herói que inspirou o brinquedo, o Buzz Lightyear, apresentando o lendário Patrulheiro Espacial que conquistou fãs de todas as gerações.', 'sessoes': [{'sala': 'Sala 1', 'horario': '16:00', 'audio': 'DUB', 'imagem': '2D'}, {'sala': 'Sala 1', 'horario': '18:15', 'audio': 'DUB', 'imagem': '2D'}] ...
+```
