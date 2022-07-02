@@ -72,7 +72,7 @@ class ScraperProgramacao(ScraperBase):
                 programacao_filme = {}
                 programacao_filme["codigo"] = self._get_codigo_filme(item)
                 programacao_filme["titulo"] = self._get_titulo_filme(item)
-                programacao_filme["urlCapa"] = self.base_url.format(
+                programacao_filme["url_capa"] = self.base_url.format(
                     self._get_url_capa(item)
                 )
                 programacao_filme["classificacao"] = self._get_classificacao(
