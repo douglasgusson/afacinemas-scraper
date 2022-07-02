@@ -11,32 +11,23 @@ class ScraperCinemas(ScraperBase):
         self.url = self.base_url.format("cinemas.php")
 
     def _get_itens_cinemas(self, soup: BeautifulSoup) -> List[BeautifulSoup]:
-        return soup.find_all("div", {"class": "col-a-6 col-c-12"})
+        return soup.find_all("section", {"class": "cartazbreve"})
 
     def _get_codigo_cinema(self, soup: BeautifulSoup) -> int:
-        a = soup.find_all("a")[-1]
-        codigo = int(a["href"].split("'")[-2].split("=")[-1])
+        codigo = int(soup.attrs.get("property"))
         return codigo
 
     def _get_nome_cinema(self, soup: BeautifulSoup) -> str:
-        return soup.find("div", {"style": "color:#494949"}).text
+        nome = soup.attrs.get("title")
+        return nome
 
     def _get_src_logo_cinema(self, soup: BeautifulSoup) -> str:
-        return self.base_url.format(soup.find("img")["src"])
+        return self.base_url.format(soup.find("img").get("src"))
 
-    def _get_endereco_cinema(self, soup: BeautifulSoup) -> str:
-        endereco_itens = soup.find_all(
-            "div",
-            {"style": "color:#494949; text-align: justify; font-size: 13px"},
-        )
-        textos = [item.text for item in endereco_itens]
-        return " ".join(textos)
-
-    def _get_contato_cinema(self, soup: BeautifulSoup) -> str:
-        return soup.find(
-            "div",
-            {"style": "color:#eb651a; text-align: justify; font-size: 13px"},
-        ).text
+    def _get_cidade_cinema(self, soup: BeautifulSoup) -> str:
+        section_databreve = soup.find("section", {"class": "databreve"})
+        p_cidade = section_databreve("p")[-1]
+        return p_cidade.text.strip()
 
     def extract(self) -> List[Dict]:
         try:
@@ -48,9 +39,8 @@ class ScraperCinemas(ScraperBase):
                 cinema = {}
                 cinema["codigo"] = self._get_codigo_cinema(item)
                 cinema["nome"] = self._get_nome_cinema(item)
-                cinema["logo"] = self._get_src_logo_cinema(item)
-                cinema["endereco"] = self._get_endereco_cinema(item)
-                cinema["contato"] = self._get_contato_cinema(item)
+                cinema["url_logo"] = self._get_src_logo_cinema(item)
+                cinema["cidade"] = self._get_cidade_cinema(item)
                 cinemas.append(cinema)
             return cinemas
         except TypeError:
