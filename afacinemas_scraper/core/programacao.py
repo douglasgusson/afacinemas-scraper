@@ -38,7 +38,7 @@ class ScraperProgramacao(ScraperBase):
     def _get_duracao(self, soup: BeautifulSoup) -> str:
         return soup.find("p").text.split(" - ")[0].strip()
 
-    def _get_sinopse(self, soup: BeautifulSoup) -> List[Dict]:
+    def _get_sinopse(self, soup: BeautifulSoup) -> str:
         return soup.find("p", {"class": "sinopse"}).text
 
     def _get_sessao(self, soup: BeautifulSoup) -> Dict:
