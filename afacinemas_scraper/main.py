@@ -32,5 +32,5 @@ class Scraper:
 
 if __name__ == "__main__":
     afa = Scraper()
-    programacao = afa.get_programacao(10, "2022-06-30")
-    print(programacao)
+    lancamentos = afa.get_proximos_lancamentos()
+    print(len(lancamentos), lancamentos)
