@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup
 
 class ScraperBase:
     def __init__(self, proxies: dict = None):
-        self.base_url = "https://afacinemas.com.br/{}"
+        self.base_url = "http://afacinemas.com.br/{}"
         self.headers = {"User-agent": "Mozilla/5.0"}
         self.proxies = proxies
 
