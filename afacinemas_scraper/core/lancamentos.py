@@ -8,8 +8,8 @@ from .base import ScraperBase
 
 
 class ScraperLancamentos(ScraperBase):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, proxies: dict = None):
+        super().__init__(proxies)
         self.url = self.base_url.format("breve_filmes.php")
 
     def _get_itens_novidades(self, soup: BeautifulSoup) -> List[BeautifulSoup]:

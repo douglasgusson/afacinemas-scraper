@@ -7,8 +7,8 @@ from .base import ScraperBase
 
 
 class ScraperFilme(ScraperBase):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, proxies: dict = None):
+        super().__init__(proxies)
         self.url = self.base_url.format("filmes.php?idf={}")
 
     def _get_elemento_filme(self, soup: BeautifulSoup) -> BeautifulSoup:
