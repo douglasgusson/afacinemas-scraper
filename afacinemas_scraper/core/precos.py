@@ -6,8 +6,8 @@ from .base import ScraperBase
 
 
 class ScraperPrecos(ScraperBase):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, proxies: dict = None):
+        super().__init__(proxies)
         self.url = self.base_url.format("preco2.php?idp={}")
 
     def _get_itens_precos(self, soup: BeautifulSoup) -> List[BeautifulSoup]:
