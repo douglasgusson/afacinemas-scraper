@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "afacinemas-scraper"
-version = "1.5.0"
+version = "1.5.1"
 description = "Ferramenta para raspagem de dados do site da rede Afa Cinemas"
 authors = ["Douglas Gusson <douglasgusson@gmail.com>"]
 license = "MIT"

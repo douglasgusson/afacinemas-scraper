@@ -13,23 +13,24 @@ requests_cache.install_cache(
 
 
 class Scraper:
-    def __init__(self, proxies: dict = None):
+    def __init__(self, proxies: dict = None, headers: dict = None):
         self.proxies = proxies
+        self.headers = headers
 
     def get_cinemas(self) -> List[Dict]:
-        sc = ScraperCinemas(proxies=self.proxies)
+        sc = ScraperCinemas(proxies=self.proxies, headers=self.headers)
         return sc.extract()
 
     def get_proximos_lancamentos(self) -> List[Dict]:
-        sc = ScraperLancamentos(proxies=self.proxies)
+        sc = ScraperLancamentos(proxies=self.proxies, headers=self.headers)
         return sc.extract()
 
     def get_precos_ingressos(self, codigo: int):
-        sc = ScraperPrecos(proxies=self.proxies)
+        sc = ScraperPrecos(proxies=self.proxies, headers=self.headers)
         return sc.extract(codigo)
 
     def get_programacao(self, codigo: int, data: str):
-        sc = ScraperProgramacao(proxies=self.proxies)
+        sc = ScraperProgramacao(proxies=self.proxies, headers=self.headers)
         return sc.extract(codigo, data)
 
 
