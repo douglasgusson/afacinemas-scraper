@@ -3,9 +3,13 @@ from bs4 import BeautifulSoup
 
 
 class ScraperBase:
-    def __init__(self, proxies: dict = None):
+    def __init__(
+        self,
+        proxies: dict = None,
+        headers: dict = {"User-agent": "Mozilla/5.0"},
+    ):
         self.base_url = "http://afacinemas.com.br/{}"
-        self.headers = {"User-agent": "Mozilla/5.0"}
+        self.headers = headers
         self.proxies = proxies
 
     def _get_soup(self) -> BeautifulSoup:

@@ -7,8 +7,8 @@ from .base import ScraperBase
 
 
 class ScraperProgramacao(ScraperBase):
-    def __init__(self, proxies: dict = None):
-        super().__init__(proxies)
+    def __init__(self, proxies: dict = None, headers: dict = None):
+        super().__init__(proxies, headers)
         self.url = self.base_url.format("acess_painel.php?idc={}&dt={}")
 
     def _get_itens_programacao(
